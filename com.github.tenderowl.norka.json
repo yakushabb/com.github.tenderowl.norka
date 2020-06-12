@@ -9,6 +9,7 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri",
+        "--filesystem=home",
         "--env=LD_LIBRARY_PATH=/app/lib"
     ],
     "cleanup" : [
