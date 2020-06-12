@@ -5,12 +5,10 @@
     "sdk": "org.gnome.Sdk",
     "command": "com.github.tenderowl.norka",
     "finish-args": [
-        "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri",
-        "--filesystem=home",
         "--env=LD_LIBRARY_PATH=/app/lib"
     ],
     "cleanup" : [
@@ -68,8 +66,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/TenderOwl/Norka.git",
-                    "tag": "0.1.0",
-                    "commit": "aff36414b192046db860759a0d46aa8fae01b940"
+                    "tag": "0.1.4",
+                    "commit": "e487add9a4b146d1e974ac58b0f284ef2996db11"
                 }
             ]
         }
