@@ -116,8 +116,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/TenderOwl/Norka.git",
-                    "tag": "0.5.0",
-                    "commit": "3ca9d4251c184da44fb70f5f35b3460e4f65d2f4"
+                    "tag": "0.5.1",
+                    "commit": "40238cdbcea84603cdd8c172d046852d8206b452"
                 }
             ]
         }
