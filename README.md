@@ -1,6 +1,6 @@
 # Norka for Flathub
 
-![Editor Day/Night theme](https://raw.githubusercontent.com/flathub/com.github.tenderowl.norka/master/screenshots/editor-mix.png)
+![Editor Day/Night theme](https://raw.githubusercontent.com/flathub/com.github.tenderowl.norka/master/screenshots/app_screenshot_1.png)
 
 ### Install:
 

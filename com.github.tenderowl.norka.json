@@ -33,7 +33,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/elementary/granite.git",
-                    "tag": "5.5.0"
+                    "tag": "6.0.0"
                 }
             ]
         },
@@ -116,8 +116,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/TenderOwl/Norka.git",
-                    "tag": "0.7.1",
-                    "commit": "7f9e66731015c4be930c75e3698247564a8ef00b"
+                    "tag": "0.7.2",
+                    "commit": "7b4c05b7b8f5a7e000b75db0be0b1bd967bea1a0"
                 }
             ]
         }
