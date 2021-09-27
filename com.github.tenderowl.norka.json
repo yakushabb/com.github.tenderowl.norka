@@ -1,8 +1,8 @@
 {
     "app-id": "com.github.tenderowl.norka",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "3.38",
-    "sdk": "org.gnome.Sdk",
+    "runtime": "io.elementary.Platform",
+    "runtime-version": "6",
+    "sdk": "io.elementary.Sdk",
     "command": "com.github.tenderowl.norka",
     "finish-args": [
         "--share=ipc",
@@ -11,6 +11,7 @@
         "--socket=wayland",
         "--device=dri",
         "--filesystem=home",
+        "--system-talk-name=org.freedesktop.Accounts",
         "--env=LD_LIBRARY_PATH=/app/lib"
     ],
     "cleanup" : [
@@ -27,85 +28,106 @@
     "modules" : [
         "shared-modules/intltool/intltool-0.51.json",
         {
-            "name": "granite",
-            "buildsystem": "meson",
-            "sources": [
+            "name" : "gtksourceview",
+            "buildsystem" : "meson",
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "https://github.com/elementary/granite.git",
-                    "tag": "6.0.0"
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/gtksourceview.git",
+                    "tag" : "4.8.2"
                 }
             ]
         },
         {
-            "name": "gtksourceview",
-            "config-opts": [
-                "--disable-Werror"
-            ],
-            "sources": [
+            "name" : "gspell",
+            "sources" : [
                 {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz",
-                    "sha256": "691b074a37b2a307f7f48edc5b8c7afa7301709be56378ccf9cc9735909077fd"
+                    "type" : "archive",
+                    "url" : "https://gitlab.gnome.org/GNOME/gspell/-/archive/1.9.1/gspell-1.9.1.tar.gz",
+                    "sha256" : "231511e8ff832f2b539f25eada592cbc40b557863cf98c1384d71a184975c76e"
                 }
             ]
         },
         {
-            "name": "gtkspell",
-            "sources": [
-            {
-                "type": "archive",
-                "url": "https://downloads.sourceforge.net/project/gtkspell/3.0.10/gtkspell3-3.0.10.tar.xz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fgtkspell%2Ffiles%2F3.0.10%2Fgtkspell3-3.0.10.tar.xz%2Fdownload&ts=1572946840",
-                "sha256": "b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732"
-            }
-            ]
-        },
-        {
-            "name": "python3-mistune",
+            "name": "python3-htmldocx",
             "buildsystem": "simple",
             "build-commands": [
-            "pip3 install --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"mistune==2.0.0a6\""
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"htmldocx\" --no-build-isolation"
             ],
             "sources": [
-            {
-                "type": "file",
-                "url": "https://files.pythonhosted.org/packages/26/e1/68d7f644f19598d466b176e649df88b9052aaa96372d133dbed86db27c8a/mistune-2.0.0a6.tar.gz",
-                "sha256": "5747cbb16fb50cd2ddd25d44d93b2c414a3b75875f6d9d58be8afbae67234ec9"
-            }
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/8b/61/91a6b70ee576a4b07310d81efd4c688fe2e6f63ea42ec95b8f1d436b887e/htmldocx-0.0.6.tar.gz",
+                    "sha256": "b4bcec895f86d7a50ffc7133ca24d85c24f3614db2b37d33a30d9d04654a5486"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/a1/69/daeee6d8f22c997e522cdbeb59641c4d31ab120aba0f2c799500f7456b7e/beautifulsoup4-4.10.0.tar.gz",
+                    "sha256": "c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/8b/a0/52729ce4aa026f31b74cc877be1d11e4ddeaa361dc7aebec148171644b33/python-docx-0.8.11.tar.gz",
+                    "sha256": "1105d233a0956dd8dd1e710d20b159e2d72ac3c301041b95f4d4ceb3e0ebebc4"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/c8/3f/e71d92e90771ac2d69986aa0e81cf0dfda6271e8483698f4847b861dd449/soupsieve-2.2.1.tar.gz",
+                    "sha256": "052774848f448cf19c7e959adf5566904d525f33a3f8b6ba6f6f8f26ec7de0cc"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/e5/21/a2e4517e3d216f0051687eea3d3317557bde68736f038a3b105ac3809247/lxml-4.6.3.tar.gz",
+                    "sha256": "39b78571b3b30645ac77b95f7c69d1bffc4cf8c3b157c435a34da72e78c82468"
+                }
+            ]
+        },
+        {
+            "name": "python3-markdown2",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"markdown2\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/bc/03/7e156a4da266e5db4fbaa8b4efc3187f14f6944d9f89f56c62b1537133b9/markdown2-2.4.0.tar.gz",
+                    "sha256": "28d769f0e544e6f68f684f01e9b186747b079a6927d9ca77ebc8c640a2829b1b"
+                }
             ]
         },
         {
             "name": "python3-requests",
             "buildsystem": "simple",
             "build-commands": [
-            "pip3 install --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"requests\""
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"requests\" --no-build-isolation"
             ],
             "sources": [
-            {
-                "type": "file",
-                "url": "https://files.pythonhosted.org/packages/6b/47/c14abc08432ab22dc18b9892252efaf005ab44066de871e72a38d6af464b/requests-2.25.1.tar.gz",
-                "sha256": "27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"
-            },
-            {
-                "type": "file",
-                "url": "https://files.pythonhosted.org/packages/ee/2d/9cdc2b527e127b4c9db64b86647d567985940ac3698eeabc7ffaccb4ea61/chardet-4.0.0.tar.gz",
-                "sha256": "0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"
-            },
-            {
-                "type": "file",
-                "url": "https://files.pythonhosted.org/packages/29/e6/d1a1d78c439cad688757b70f26c50a53332167c364edb0134cadd280e234/urllib3-1.26.2.tar.gz",
-                "sha256": "19188f96923873c92ccb987120ec4acaa12f0461fa9ce5d3d0772bc965a39e08"
-            },
-            {
-                "type": "file",
-                "url": "https://files.pythonhosted.org/packages/ea/b7/e0e3c1c467636186c39925827be42f16fee389dc404ac29e930e9136be70/idna-2.10.tar.gz",
-                "sha256": "b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"
-            },
-            {
-                "type": "file",
-                "url": "https://files.pythonhosted.org/packages/06/a9/cd1fd8ee13f73a4d4f491ee219deeeae20afefa914dfb4c130cfc9dc397a/certifi-2020.12.5.tar.gz",
-                "sha256": "1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c"
-            }
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/e7/01/3569e0b535fb2e4a6c384bdbed00c55b9d78b5084e0fb7f4d0bf523d7670/requests-2.26.0.tar.gz",
+                    "sha256": "b8aa58f8cf793ffd8782d3d8cb19e66ef36f7aba4353eec859e74678b01b07a7"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/6d/78/f8db8d57f520a54f0b8a438319c342c61c22759d8f9a1cd2e2180b5e5ea9/certifi-2021.5.30.tar.gz",
+                    "sha256": "2bbf76fd432960138b3ef6dda3dde0544f27cbf8546c458e60baf371917ba9ee"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/4f/5a/597ef5911cb8919efe4d86206aa8b2658616d676a7088f0825ca08bd7cb8/urllib3-1.26.6.tar.gz",
+                    "sha256": "f57b4c16c62fa2760b7e3d97c35b255512fb6b59a259730f36ba32ce9f8e342f"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/e7/4e/2af0238001648ded297fb54ceb425ca26faa15b341b4fac5371d3938666e/charset-normalizer-2.0.4.tar.gz",
+                    "sha256": "f23667ebe1084be45f6ae0538e4a5a865206544097e4e8bbcacf42cd02a348f3"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/cb/38/4c4d00ddfa48abe616d7e572e02a04273603db446975ab46bbcd36552005/idna-3.2.tar.gz",
+                    "sha256": "467fbad99067910785144ce333826c71fb0e63a425657295239737f7ecd125f3"
+                }
             ]
         },
         {
@@ -116,8 +138,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/TenderOwl/Norka.git",
-                    "tag": "0.7.2",
-                    "commit": "6f1d66ce4d83f3b4b37c8203c0e9e84d77f29409"
+                    "tag": "0.8.0",
+                    "commit": "5eec14c0dd73573aad6cf7088fc2f9dbf59e2450"
                 }
             ]
         }
