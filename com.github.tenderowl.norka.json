@@ -1,8 +1,8 @@
 {
     "app-id": "com.github.tenderowl.norka",
-    "runtime": "io.elementary.Platform",
+    "runtime": "org.gnome.Platform",
     "runtime-version": "6",
-    "sdk": "io.elementary.Sdk",
+    "sdk": "org.gnome.Sdk",
     "command": "com.github.tenderowl.norka",
     "finish-args": [
         "--share=ipc",
@@ -26,6 +26,116 @@
         "*.a"
     ],
     "modules" : [
+        {
+            "name": "granite",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/elementary/granite.git",
+                    "tag": "6.1.1"
+                }
+            ]
+        },
+        {
+          "name" : "libhandy",
+          "buildsystem" : "meson",
+          "builddir" : true,
+          "config-opts": [
+            "-Dexamples=false",
+            "-Dtests=false"
+          ],
+          "sources" : [
+            {
+              "type" : "git",
+              "url" : "https://gitlab.gnome.org/GNOME/libhandy.git"
+            }
+          ]
+        },
+        {
+            "name": "elementary-stylesheet",
+            "buildsystem": "meson",
+            "sources": [
+              {
+                "type": "git",
+                "url": "https://github.com/elementary/stylesheet.git",
+                "tag": "6.0.0"
+              }
+            ],
+            "modules": [
+              {
+                "name": "sassc",
+                "cleanup": [
+                  "*"
+                ],
+                "sources": [
+                  {
+                    "type": "git",
+                    "url": "https://github.com/sass/sassc.git",
+                    "tag": "3.6.1"
+                  },
+                  {
+                    "type": "script",
+                    "dest-filename": "autogen.sh",
+                    "commands": [
+                      "autoreconf -si"
+                    ]
+                  }
+                ],
+                "modules": [
+                  {
+                    "name": "libsass",
+                    "cleanup": [
+                      "*"
+                    ],
+                    "sources": [
+                      {
+                        "type": "git",
+                        "url": "https://github.com/sass/libsass.git",
+                        "tag": "3.6.4"
+                      },
+                      {
+                        "type": "script",
+                        "dest-filename": "autogen.sh",
+                        "commands": [
+                          "autoreconf -si"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "elementary-icons",
+            "buildsystem": "meson",
+            "config-opts": [
+              "-Dpalettes=false"
+            ],
+            "sources": [
+              {
+                "type": "git",
+                "url": "https://github.com/elementary/icons.git",
+                "tag": "6.0.0"
+              }
+            ],
+            "modules": [
+              {
+                "name": "xcursorgen",
+                "cleanup": [
+                  "*"
+                ],
+                "sources": [
+                  {
+                    "type": "archive",
+                    "url": "https://gitlab.freedesktop.org/xorg/app/xcursorgen/-/archive/xcursorgen-1.0.7/xcursorgen-xcursorgen-1.0.7.tar.gz",
+                    "sha256": "7fb30a052b63e3ed02c9e43bd70fe1bf8189f2f3d702ab43b5b0726a2dbafccd"
+                  }
+                ]
+              }
+            ]
+          }
         "shared-modules/intltool/intltool-0.51.json",
         {
             "name" : "gtksourceview",
