@@ -11,6 +11,7 @@
     "--socket=wayland",
     "--device=dri",
     "--filesystem=home",
+    "--socket=cups",
     "--system-talk-name=org.freedesktop.Accounts",
     "--env=LD_LIBRARY_PATH=/app/lib"
   ],
