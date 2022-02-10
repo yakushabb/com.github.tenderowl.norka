@@ -1,0 +1,35 @@
+{
+    "name": "python3-htmldocx",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"htmldocx\" --ignore-installed --no-build-isolation"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/8f/da/c70fc2ce54c1d1ce7c16f9656589273a6c94cbbc8867b3a512618d977309/htmldocx-0.0.6-py3-none-any.whl",
+            "sha256": "adf5e95ad8ba8121e606cf138c614de13327a1192a5782acdb4a0abdc23db1b7"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/69/bf/f0f194d3379d3f3347478bd267f754fc68c11cbf2fe302a6ab69447b1417/beautifulsoup4-4.10.0-py3-none-any.whl",
+            "sha256": "9a315ce70049920ea4572a4055bc4bd700c940521d36fc858205ad4fcde149bf"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/8b/a0/52729ce4aa026f31b74cc877be1d11e4ddeaa361dc7aebec148171644b33/python-docx-0.8.11.tar.gz",
+            "sha256": "1105d233a0956dd8dd1e710d20b159e2d72ac3c301041b95f4d4ceb3e0ebebc4"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/72/a6/fd01694427f1c3fcadfdc5f1de901b813b9ac756f0806ef470cfed1de281/soupsieve-2.3.1-py3-none-any.whl",
+            "sha256": "1a3cca2617c6b38c0343ed661b1fa5de5637f257d4fe22bd9f1338010a1efefb"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/84/74/4a97db45381316cd6e7d4b1eb707d7f60d38cb2985b5dfd7251a340404da/lxml-4.7.1.tar.gz",
+            "sha256": "a1613838aa6b89af4ba10a0f3a972836128801ed008078f8c1244e65958f1b24"
+        }
+    ]
+}
+
