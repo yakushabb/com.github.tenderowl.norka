@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.tenderowl.norka",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "46",
     "sdk": "org.gnome.Sdk",
     "command": "norka",
     "finish-args": [
